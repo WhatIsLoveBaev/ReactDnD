@@ -1,38 +1,131 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background: #2d2834;
   font-size: calc(10px + 2vmin);
+  text-align: center;
+  
+}
+
+.App-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: white;
 }
+.drag-n-drop {
+  padding: .5rem;
+  display: grid;
+  gap: .5rem;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: repeat(auto-fill, 300px);
+  align-items: start;
+}
+.dnd-group {
+  background: #494257;
+  border-radius: 5px;
+  padding: .25rem;
+  border: 4px solid #4d4257;
+}
+.group-title {
+  text-align: left;
+  font-size: 1.5rem;
+  padding: .75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.group-title input {position: relative;}
 
-.App-link {
-  color: #61dafb;
+.group-title .input-background::before {position: absolute; content: "B"; left: 50%; top: 50%; color: #fff; transform: translate(-50%, -50%); text-shadow: 0px 0px 5px #000000;}
+.group-title .input-color::before {position: absolute; content: "C"; left: 50%; top: 50%; color: #fff; transform: translate(-50%, -50%); text-shadow: 0px 0px 5px #000000;}
+
+.dnd-item {
+  background: whitesmoke;
+  color: #282c34;
+  padding: 1rem;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+.dnd-group.do .dnd-item {
+  background: rgb(236, 217, 217);
+}
+.dnd-group.process .dnd-item {
+  background: rgb(233, 233, 208);
+}
+.dnd-group.finish .dnd-item {
+  background: rgb(200, 230, 203);
+}
+.dnd-item:not(:last-of-type) {
+  margin-bottom: .5rem;
+}
+.dnd-item * {
+  margin: 0;
+  font-size: 1.2rem;
+}
+.current {
+  background: #282c34;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.add-card {
+  border: 4px dashed #fff;
+  cursor: pointer;
+  opacity: .2;
+  transition: .3s;
+}
+.add-card:hover, .add-item:hover {
+  opacity: 1;
+}
+.add-card .group-title {
+  position: relative;
+}
+.add-card .group-title::before, .add-card .group-title::after {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  width: 2rem;
+  height: .25rem;
+  background: #fff;
+  transform: translate(-50%, -50%);
+}
+.group-title::after, .add-item::after {
+  transform: translate(-50%, -50%) rotate(90deg) !important;
+}
+.add-item {
+  border: 4px dashed #fff;
+  cursor: pointer;
+  opacity: .2;
+  transition: .3s;
+  background: transparent !important;
+  position: relative;
+}
+.add-item::before, .add-item::after {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  width: 2rem;
+  height: .25rem;
+  background: #fff;
+  transform: translate(-50%, -50%);
+}
+input[type="color" i] {
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+  
+}
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 50%;
 }
