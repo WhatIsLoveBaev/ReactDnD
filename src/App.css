@@ -4,7 +4,7 @@
   background: #2d2834;
   font-size: calc(10px + 2vmin);
   text-align: center;
-  
+  color: #fff;
 }
 
 .App-body {
@@ -35,6 +35,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 .group-title input {position: relative;}
 
@@ -50,8 +51,34 @@
   justify-content: center;
   align-items: center;
   font-weight: bold;
+  position: relative;
+  transition: .3s;
 }
-.dnd-group.do .dnd-item {
+.dnd-item:hover .remove, .group-title:hover .remove {
+  opacity: 1;
+  cursor: pointer;
+}
+
+
+.dnd-item .remove, .group-title .remove {transition: .3s; opacity: 0;}
+.dnd-item .remove::before, .group-title .remove::before {
+  content: "\2718";
+  position: absolute;
+  top: 50%;
+  right: .5rem;
+  transform: translateY(-50%);
+  padding-bottom: 10px;
+  padding: .15rem .25rem .25rem .25rem;
+  color: rgb(185, 0, 0);
+  text-shadow: 0px 0px 5px #000000;
+}
+.group-title .remove::before {
+  font-size: 1.2rem;
+}
+.colors {
+  margin-right: 1.5rem;
+}
+/* .dnd-group.do .dnd-item {
   background: rgb(236, 217, 217);
 }
 .dnd-group.process .dnd-item {
@@ -59,7 +86,7 @@
 }
 .dnd-group.finish .dnd-item {
   background: rgb(200, 230, 203);
-}
+} */
 .dnd-item:not(:last-of-type) {
   margin-bottom: .5rem;
 }
@@ -128,4 +155,41 @@ input[type="color"]::-webkit-color-swatch-wrapper {
 input[type="color"]::-webkit-color-swatch {
   border: none;
   border-radius: 50%;
+}
+.input-accept {
+  border: 0;
+  border-bottom: 2px solid #000;
+  background: none;
+  width: 100%;
+  outline: none;
+  font-weight: bold;
+  font-size: calc(10px + 2vmin);
+}
+.accept, .abort {
+  padding: 0 .5rem;
+  margin: 0 .5rem;
+  position: relative;
+  cursor: pointer;
+}
+.accept::before, .abort::before {
+  content: "\2714";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(46, 116, 46);
+  text-shadow: 0px 0px 1px #000000;
+}
+.abort {
+  margin: 0;
+}
+.abort::before {
+  content: "\2718";
+  padding-bottom: 3px;
+  color: rgb(131, 48, 48);
+  text-shadow: 0px 0px 1px #000000;
+}
+.add-new-card .input-accept {
+  color: #fff;
+  border-bottom: 2px solid #fff;
 }
