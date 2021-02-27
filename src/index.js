@@ -6,7 +6,7 @@ import App from "./App"
 import { observable, makeObservable, action, computed } from 'mobx'
 import { observer } from 'mobx-react'
 
-/* class StoreDND {
+class StoreDND {
     data = [
       {title: 'Сделать', color: '#000000', background: '#d3a1a1',  id: 'do', items: [{text: 'Понять', id: 1}, {text: 'Купить хлеб', id: 2}, {text: 'Поработать', id: 3}]},
       {title: 'Вылоняется', color: '#000000', background: '#d5d2af', id: 'process', items: [{text: 'Подумать', id: 4}, {text: 'Разобрать', id: 5}]},
@@ -59,7 +59,7 @@ import { observer } from 'mobx-react'
     }
   }
   
-  const store = new StoreDND() */
+  const store = new StoreDND()
 
 
 ReactDOM.render(<App />, document.getElementById('root'));
